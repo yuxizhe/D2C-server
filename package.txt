@@ -1,6 +1,6 @@
 pip3 install flask
 pip3 install opencv-python-headless
-pip3 install tensorflow
+pip3 install tf-nightly
 pip3 install keras
 
 sudo apt install tesseract-ocr
@@ -12,3 +12,6 @@ pip3 install pytesseract
 # 启动
 lsof -i tcp:5000 | grep LISTEN | awk '{print $2}' | xargs kill -9
 nohup python3 -u app.py > app.log 2>&1 &
+
+# pip 版本过低时无法安装 tf-nightly
+python3 -m pip install --upgrade pip

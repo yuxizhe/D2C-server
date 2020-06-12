@@ -2,3 +2,6 @@ images/*.png
 images/*.PNG
 images/*.jpg
 images/*.jpge
+
+*.zip
+model/

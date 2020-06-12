@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*
-
 from flask import Flask, jsonify, request
 from service.tf import tfServer
 
@@ -10,24 +9,19 @@ ALLOWED_EXTENSIONS = set(['png', 'PNG', 'jpg', 'jpeg'])
 def root():
     return 'D2C后台服务'
 
-@app.route('/json')
-def test():
-    t = {'a':1}
-    return jsonify(t)
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@app.route('/form', methods=['POST'])
-def upload_file():
+@app.route('/generate/form', methods=['POST'])
+def generate_form():
   if request.files:
     file = request.files['file']
     if file and allowed_file(file.filename):
       file.save('images/'+file.filename)
       result = tfServer('images/'+file.filename)
       return jsonify({'success': 'true', 'data': result})
-  return jsonify({'success': 'false', 'message': '请传文件file'})
+  return jsonify({'success': 'false', 'message': '请传文件-file'})
 
 if __name__ == '__main__':
     # app.debug = True

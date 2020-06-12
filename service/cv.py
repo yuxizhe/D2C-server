@@ -109,4 +109,4 @@ def element_ocr(cropped, img, x, y, w, h):
 
   return inner_text,before_text
 
-print(cv_get_block('./images/1.png'))
+# print(cv_get_block('./images/1.png'))

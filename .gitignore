@@ -5,3 +5,5 @@ images/*.jpge
 
 *.zip
 model/
+*.pyc
+*.log

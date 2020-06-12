@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*
 
 from flask import Flask, jsonify, request
+from service.tf import tfServer
+
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = set(['png', 'PNG', 'jpg', 'jpeg'])
 
@@ -23,9 +25,10 @@ def upload_file():
     file = request.files['file']
     if file and allowed_file(file.filename):
       file.save('images/'+file.filename)
-      return jsonify({'success': 'true', 'message': '上传成功'})
+      result = tfServer('images/'+file.filename)
+      return jsonify({'success': 'true', 'data': result})
   return jsonify({'success': 'false', 'message': '请传文件file'})
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(port=7878)
+    # app.debug = True
+    app.run(port=5000)

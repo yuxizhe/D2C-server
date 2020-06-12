@@ -1,10 +1,14 @@
 import tensorflow as tf
 import json
-import keras
+from tensorflow import keras
+import numpy as np
 from keras.preprocessing.image import ImageDataGenerator
 
-html_model = tf.keras.models.load_model('./model/1589869679/')
+from service.cv import cv_get_block
 
+print(tf.__version__)
+
+html_model = tf.keras.models.load_model('./model/1589869679/')
 # create a data generator
 datagen = ImageDataGenerator(rescale=(1/255))
 
@@ -26,8 +30,8 @@ def tfServer(path):
   # 结果对应上名字
   predicted_name = class_name[predicted_id]
 
-  print(predicted_name)
-  print(boxes_batch)
+  # print(predicted_name)
+  # print(boxes_batch)
   # 图示结果
   #result_show(image_batch, predicted_name)
 
@@ -38,7 +42,7 @@ def tfServer(path):
   for index in range(len(boxes_batch)):
     item = np.append(boxes_batch[index], predicted_name[index])
     # 翻译命名
-    item = np.append(item, translate(boxes_batch[index][2]))
+    # item = np.append(item, translate(boxes_batch[index][2]))
     result_list.append(item)
 
   class NumpyEncoder(json.JSONEncoder):
@@ -48,5 +52,7 @@ def tfServer(path):
           return json.JSONEncoder.default(self, obj)
 
   json_result = json.dumps(result_list, cls=NumpyEncoder)
-
+  print(json_result)
   return json_result
+
+# print(tfServer('./images/1.png'))

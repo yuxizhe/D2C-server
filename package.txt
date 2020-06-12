@@ -8,3 +8,7 @@ sudo apt install tesseract-ocr-chi-sim
 
 pip3 install pillow
 pip3 install pytesseract
+
+# 启动
+lsof -i tcp:5000 | grep LISTEN | awk '{print $2}' | xargs kill -9
+nohup python3 -u app.py > app.log 2>&1 &

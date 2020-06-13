@@ -1,6 +1,11 @@
 
 # D2C机器学习生成CRM表单 - 服务端部署
 
+## 表单智能生成 & 编辑器
+> https://blog.dappwind.com/crm-editor/
+
+![](https://cdn.jsdelivr.net/gh/dappwind/image/20200613230012.png)
+
 ## 接口
 
 > https://api.dappwind.com/ai/generate/form

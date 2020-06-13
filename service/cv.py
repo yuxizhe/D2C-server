@@ -103,7 +103,7 @@ def resize_image(img):
 
 # 文字过滤
 def string_filter(text):
-    new_text = re.sub('[a-zA-Z0-9’!"#$%&\'()*+,-./:;<=>?@，。?★、…【】《》？“”‘’！[\\]^_`{|}~\s]+', "", text)
+    new_text = re.sub('[’!"#$%&\'()*+,-./:;<=>?@，。?★、…【】《》？“”‘’！[\\]^_`{|}~\s]+', "", text)
     return new_text
 
 # 识别元素内及元素前的文字

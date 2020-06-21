@@ -33,7 +33,7 @@ body: `file`  要识别的表单图片
 pip3 install flask
 pip3 install opencv-python-headless
 pip3 install tf-nightly
-pip3 install keras
+# pip3 install keras
 pip3 install pillow
 pip3 install pytesseract
 ```

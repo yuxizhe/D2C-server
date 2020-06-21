@@ -56,19 +56,20 @@ def cv_get_block(location):
         # 识别矩形中的文字
         inner_text, before_text = element_ocr(cropped, img, x, y, w, h)
 
-        # 传出
-        positionAndText.append([box, inner_text, before_text])
+        # 传出位置与文字
+        # positionAndText.append([box, inner_text, before_text])
+        positionAndText.append({'position': box.tolist(), 'inner_text':inner_text, 'before_text': before_text})
 
         # 格式化为正方形
         cropped = resize_image(cropped)
         croppedImage.append(cropped)
         # 绘制矩形
-        cv2.drawContours(img, [box], 0, (255, 0, 255), 1)
+        # cv2.drawContours(img, [box], 0, (255, 0, 255), 1)
 
-    # 输出 array 而不是list
+    # 输出 nparray 而不是list
     # 'Input data in `NumpyArrayIterator` should have rank 4. You passed an array with shape', (224, 224, 3))
     # 因为 ImageDataGenerator.flow 输入为 NumpyArray
-    return np.array(croppedImage), np.array(positionAndText), img
+    return np.array(croppedImage), np.array(positionAndText)
 
 
 min_side = 224
@@ -112,14 +113,14 @@ def element_ocr(cropped, img, x, y, w, h):
     cropped = cv2.cvtColor(cropped, cv2.COLOR_BGR2GRAY)
     # 识别矩形中的文字
     inner_text = string_filter(pytesseract.image_to_string(cropped, lang='chi_sim'))
-    print('元素内文字:  ' + inner_text)
+    # print('元素内文字:  ' + inner_text)
 
     # 识别矩形前的文字 往前200
     textAreaBefore = img[y:y+h, max(0, x-200):x]
     # cv2_imshow(textAreaBefore)
     # 识别前序文字
     before_text = string_filter(pytesseract.image_to_string(textAreaBefore, lang='chi_sim'))
-    print('元素前区域文字：  '+before_text)
+    # print('元素前区域文字：  '+before_text)
 
     return inner_text, before_text
 

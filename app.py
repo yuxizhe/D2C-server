@@ -5,6 +5,18 @@ from service.tf import tfServer
 app = Flask(__name__)
 ALLOWED_EXTENSIONS = set(['png', 'PNG', 'jpg', 'jpeg'])
 
+from elasticapm.contrib.flask import ElasticAPM
+app.config['ELASTIC_APM'] = {
+  # Set the required service name. Allowed characters:
+  # a-z, A-Z, 0-9, -, _, and space
+  'SERVICE_NAME': 'D2C-server',
+
+  'SERVER_URL': 'https://g.dappwind.com/apm/',
+
+  # Set the service environment
+#   'ENVIRONMENT': 'debug',
+}
+apm = ElasticAPM(app)
 
 @app.route('/')
 def root():

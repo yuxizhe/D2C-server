@@ -40,6 +40,7 @@ pip3 install tensorflow --no-cache-dir
 pip3 install keras
 pip3 install pillow
 pip3 install pytesseract
+pip3 install 'elastic-apm[flask]'
 ```
 
 <!-- >pip 版本过低时无法安装 tf-nightly

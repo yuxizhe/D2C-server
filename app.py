@@ -16,7 +16,7 @@ app.config['ELASTIC_APM'] = {
   # Set the service environment
 #   'ENVIRONMENT': 'debug',
 }
-apm = ElasticAPM(app)
+# apm = ElasticAPM(app)
 
 @app.route('/')
 def root():

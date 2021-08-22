@@ -39,6 +39,7 @@ pip3 install opencv-python-headless
 pip3 install tensorflow --no-cache-dir
 pip3 install keras
 pip3 install pillow
+pip3 install scipy
 pip3 install pytesseract
 pip3 install 'elastic-apm[flask]'
 ```

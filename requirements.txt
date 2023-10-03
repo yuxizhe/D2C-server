@@ -1,5 +1,5 @@
 Flask==1.1.2
 opencv-python-headless===4.2.0
-Pillow==7.1.2
+Pillow==10.0.1
 pytesseract==0.3.4
 tf-nightly==2.3.0.dev20200513
